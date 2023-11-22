@@ -11,14 +11,6 @@ const Author = mongoose.model("Author", {
   name: String,
 });
 
-const Book = mongoose.model("Book", {
-  title: String,
-  author: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Author",
-  },
-});
-
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
 // when starting the server. Example command to overwrite PORT env variable value:
 // PORT=9000 npm start
