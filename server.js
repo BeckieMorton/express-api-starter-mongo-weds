@@ -3,7 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017/books";
+const mongoUrl = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/books";
 const connectToMongo = () => {
   mongoose
     .connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
