@@ -3,8 +3,18 @@ import cors from "cors";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/books";
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017/books";
+const connectToMongo = () => {
+  mongoose
+    .connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("Connected successfully"))
+    .catch((err) => {
+      console.error("Connection error:", err);
+      setTimeout(connectToMongo, 5000);
+    });
+};
+
+connectToMongo();
 mongoose.Promise = Promise;
 
 const Author = mongoose.model("Author", {
